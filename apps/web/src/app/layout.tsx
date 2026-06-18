@@ -21,7 +21,6 @@ import { Navbar, NavbarSkeleton } from "@/components/navbar";
 import { PreviewBar } from "@/components/preview-bar";
 import { Providers } from "@/components/providers";
 import { getNavigationData } from "@/lib/navigation";
-// import { sanityLiveAction } from "@/lib/sanity-live-action";
 import { revalidateSyncTags } from "@/app/actions/revalidate";
 
 const fontSans = Geist({
@@ -63,7 +62,11 @@ export default async function RootLayout({
           ) : (
             <CachedFooter perspective="published" stega={false} />
           )}
-          <SanityLive action={revalidateSyncTags} waitFor={isDraftMode ? undefined : 'function'} includeDrafts={isDraftMode} />
+          <SanityLive
+            action={revalidateSyncTags}
+            waitFor={isDraftMode ? undefined : "function"}
+            includeDrafts={isDraftMode}
+          />
           <CombinedJsonLd includeOrganization includeWebsite />
           {isDraftMode && (
             <>
